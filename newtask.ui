@@ -13,6 +13,26 @@
   <property name="windowTitle">
    <string>New task</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#NewTask
+{
+	background-color: white;
+}
+#okButton, #cancelButton
+{
+	background-color: rgb(0, 170, 255);
+	color: white;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+#taskName
+{
+	background-color: rgb(0, 170, 255);
+	color: rgb(255, 255, 255, 200);
+	font-size: 20px;
+}</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLineEdit" name="taskName">
@@ -52,7 +72,14 @@
      <item>
       <widget class="QPushButton" name="okButton">
        <property name="text">
-        <string>OK</string>
+        <string>Create</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton">
+       <property name="text">
+        <string>Cancel</string>
        </property>
       </widget>
      </item>

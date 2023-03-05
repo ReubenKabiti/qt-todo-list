@@ -18,10 +18,12 @@ private:
 
 public:
     static Task *newTask(QWidget *parent);
-    static NewTask **init(QWidget *parent);
+    static NewTask *init(QWidget *parent);
 
 private slots:
     void on_okButton_clicked();
+
+    void on_cancelButton_clicked();
 
 private:
     Ui::NewTask *ui;

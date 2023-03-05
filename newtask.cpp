@@ -1,5 +1,6 @@
 #include "newtask.h"
 #include "ui_newtask.h"
+#include <QDebug>
 
 NewTask::NewTask(QWidget *parent) :
     QDialog(parent),
@@ -15,33 +16,34 @@ NewTask::~NewTask()
 
 Task *NewTask::newTask(QWidget *parent)
 {
-    auto instancePtr = init(parent);
-    auto instance = *instancePtr;
-
-    instance->exec();
-
-    QString taskName = instance->ui->taskName->text();
-    if (taskName.length() == 0)
+    auto instance = init(parent);
+    int status = instance->exec();
+    if (status == 0)
         return nullptr;
 
+    QString taskName = instance->ui->taskName->text();
     Task *task = new Task;
     task->setTaskName(taskName);
 
-    delete instance;
-    *instancePtr = nullptr;
     return task;
 }
 
-NewTask **NewTask::init(QWidget *parent)
+NewTask *NewTask::init(QWidget *parent)
 {
     static NewTask *instance = nullptr;
     if (instance == nullptr)
         instance = new NewTask(parent);
-    return &instance;
+    return instance;
 }
 
 void NewTask::on_okButton_clicked()
 {
     accept();
+}
+
+
+void NewTask::on_cancelButton_clicked()
+{
+    reject();
 }
 

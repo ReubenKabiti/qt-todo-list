@@ -26,8 +26,10 @@ void TodoList::on_newButton_clicked()
         return;
 
     task->setParent(this);
-    ui->tasks->insertWidget(0, task);
+    int lastIndex = ui->tasks->children().length() - 1;
+    ui->tasks->insertWidget(lastIndex, task);
     connect(task->getUi()->deleteButton, &QPushButton::pressed, this, &TodoList::deleteButtonPressed);
+
 }
 
 void TodoList::deleteButtonPressed()
